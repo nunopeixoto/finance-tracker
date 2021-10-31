@@ -1,16 +1,60 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthService } from './auth.service';
+import { CustomHttpInterceptor } from './custom-http-interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
+  
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomepageComponent,
+    DashboardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    RouterModule.forRoot([
+        { path: '', component: HomepageComponent},
+        { path: 'login', component: LoginComponent},
+        { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]}
+    ])
   ],
-  providers: [],
+  exports: [RouterModule],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: CustomHttpInterceptor,
+        multi: true
+    },
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
