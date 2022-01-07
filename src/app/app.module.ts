@@ -20,6 +20,9 @@ import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuardService } from './auth-guard.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { PortfoliosComponent } from './portfolios/portfolios.component';
 
 @NgModule({
   
@@ -27,7 +30,10 @@ import { AuthGuardService } from './auth-guard.service';
     AppComponent,
     LoginComponent,
     HomepageComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavbarComponent,
+    ExpensesComponent,
+    PortfoliosComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,9 @@ import { AuthGuardService } from './auth-guard.service';
     RouterModule.forRoot([
         { path: '', component: HomepageComponent},
         { path: 'login', component: LoginComponent},
-        { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]}
+        { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
+        { path: 'expenses', component: ExpensesComponent, canActivate: [AuthGuardService]},
+        { path: 'portfolios', component: PortfoliosComponent, canActivate: [AuthGuardService]}
     ])
   ],
   exports: [RouterModule],

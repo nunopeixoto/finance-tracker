@@ -1,0 +1,56 @@
+@mixin nav-item-selected {
+    transition: color .2s ease,background-color .2s ease;
+    background-color: rgba(255,255,255,.1);
+    border-radius: 0.475rem;
+}
+
+.navbar {
+    height: 100px;
+    //background: linear-gradient(0deg,#0083FF .11%,#0049FF 127.33%);
+    background-image: url('/assets/images/header-bg.png');
+    &-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        height: 100%;
+    }
+
+    &-brand {
+        padding-left: 20px;
+        flex: 0 0 auto;
+        font-size: 24px;
+        font-weight: 500;
+        color: white;
+    }
+
+    &-items-container {
+        padding-left: 40px;
+        height: 40px;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            
+            li {
+                cursor: pointer;
+                padding: 8px 12px;
+                font-weight: 500;
+                display: block;
+                list-style-type: none;
+                margin-left: 2px;
+                color: #fff;
+
+                &:hover {
+                    @include nav-item-selected;
+                }
+            }
+
+            li.selected {
+                @include nav-item-selected;
+            }
+        }
+    }
+}
