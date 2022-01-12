@@ -1,2 +1,8 @@
 <app-navbar></app-navbar>
 <p>expenses works!</p>
+
+<div *ngFor="let expense of expenses">
+    <p>id {{ expense.id }}</p>
+    <p>date {{ expense.date }}</p>
+    <p>description {{ expense.description }}</p>
+</div>

@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthService } from './auth/auth.service';
+import { ExpensesService } from './expenses/expenses.service';
 import { CustomHttpInterceptor } from './custom-http-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
@@ -61,7 +62,8 @@ import { PortfoliosComponent } from './portfolios/portfolios.component';
         multi: true
     },
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    ExpensesService
   ],
   bootstrap: [AppComponent]
 })
