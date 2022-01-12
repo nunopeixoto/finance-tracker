@@ -12,14 +12,14 @@ import {MatInputModule} from '@angular/material/input';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AuthService } from './auth.service';
+import { AuthService } from './auth/auth.service';
 import { CustomHttpInterceptor } from './custom-http-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './auth/auth-guard.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { PortfoliosComponent } from './portfolios/portfolios.component';

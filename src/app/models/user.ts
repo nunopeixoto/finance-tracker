@@ -4,5 +4,5 @@ export interface User {
     email: string,
     email_verified_at: Date,
     created_at: Date,
-    upadted_at: Date
+    updted_at: Date
 }

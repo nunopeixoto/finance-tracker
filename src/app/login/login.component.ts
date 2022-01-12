@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
         // todo validate input
         this.authService.login(this.email, this.password)
         .subscribe((data: any) => {
-          console.log('get token')
           localStorage.getItem('token');
           this.router.navigate(['./dashboard']);
         });
