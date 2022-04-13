@@ -1,26 +1,67 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { AuthPayload } from './auth-payload';
+import { Observable } from 'rxjs';
+import { LoginResponseDto } from './dto/response/login-response.dto';
+import { RegisterRequestDto } from './dto/request/register-request.dto';
+import {Router} from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthService {
 
+    constructor(
+      private http: HttpClient,
+      private router: Router
+    ) { }
 
-    constructor(private http: HttpClient) { }
-    
-    login(email: string, password: string) {
-        return this.http.post<AuthPayload>('http://finance-tracker.api.com:8000/api/login', {email: email, password: password})
-            .pipe(map(response => {
-                localStorage.setItem('token', response.token);
-            }))
-        ; 
+    login(email: string, password: string): void {
+      this.getCsrfCookie().subscribe(() => {
+        this.http.post<LoginResponseDto>(environment.apiUrl + '/login', {email: email, password: password})
+          .subscribe({
+            complete: () => {
+              this.logUser();
+            },
+            error: (e) => {
+              console.error(e)
+            }
+        });
+      });
+    }
+
+    logout() : void {
+      this.getCsrfCookie().subscribe(() => {
+        this.http.post<[]>(environment.apiUrl + '/api/logout', {}).subscribe(() => {
+          this.logoutUser();
+        });
+      });
+    }
+
+    register(payload:RegisterRequestDto): void {
+      this.getCsrfCookie().subscribe(() => {
+        this.http.post<LoginResponseDto>(environment.apiUrl + '/api/register', payload).subscribe(() => {
+          this.router.navigate(['./auth/login']);
+        });
+      });
+    }
+
+    getCsrfCookie() : Observable<any> {
+      return this.http.get<any>(environment.apiUrl + '/sanctum/csrf-cookie');
     }
 
     public isAuthenticated(): boolean {
-        //const jwtHelper = new JwtHelperService();
-        const token = localStorage.getItem('token') || undefined;
-        return token !== undefined; // cant validate if is expired because is not a jwt?
-        //return !jwtHelper.isTokenExpired(token);
+      return document.cookie.includes('logged_in=true');
+    }
+
+    public logoutUser() : void {
+      document.cookie = 'logged_in=false; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        this.router.navigate(['./auth/login']);
+    }
+
+    private logUser() : void {
+      let d:Date = new Date();
+      d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
+      let expires:string = `expires=${d.toUTCString()}`;
+      document.cookie = `logged_in=true; ${expires}`;
+      this.router.navigate(['./home']);
     }
 }
