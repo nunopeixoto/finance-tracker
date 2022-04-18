@@ -11,8 +11,12 @@ const routes: Routes = [
     path: '',   redirectTo: '/auth/login', pathMatch: 'full'
   },
   {
+    path: 'expenses',
+    loadChildren: () => import('src/app/features/expenses/expenses.module').then(m => m.ExpensesModule)
+  },
+  {
     path: 'home',
-    loadChildren: () => import('src/app/content/content.module').then(m => m.ContentModule)
+    loadChildren: () => import('src/app/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '**',

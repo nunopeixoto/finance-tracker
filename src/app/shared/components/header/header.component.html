@@ -1,4 +1,11 @@
 <mat-toolbar color="primary" class="flex justify-between">
-  <span>App name</span>
-  <button (click)="logout()" mat-button>Logout</button>
+  <div>
+    <a routerLink="/home">Finance tracker</a>
+  </div>
+  <div>
+    <button mat-button>
+      <a routerLink="/expenses" routerLinkActive="expenses">Expenses</a>
+    </button>
+    <button mat-button (click)="logout()"> Logout </button>
+  </div>
 </mat-toolbar>
