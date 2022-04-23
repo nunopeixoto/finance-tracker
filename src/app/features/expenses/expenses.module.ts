@@ -3,12 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ExpensesRoutingModule } from './expenses-routing.module';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ExpenseCategoryService } from './services/expense-category.service';
+import { ExpenseService } from './services/expense.service';
+import { ExpenseSubCategoryService } from './services/expense-sub-category.service';
+import { CreateExpenseComponent } from './create-expense/create-expense.component';
+import { NgxDatePipe } from 'src/app/shared/pipes/ngx-date.pipe';
 
 
 
 @NgModule({
   declarations: [
-    ExpensesComponent
+    ExpensesComponent,
+    CreateExpenseComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +22,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule
   ],
   providers: [
+    ExpenseCategoryService,
+    ExpenseSubCategoryService,
+    ExpenseService,
+    NgxDatePipe
   ]
 })
 export class ExpensesModule { }
