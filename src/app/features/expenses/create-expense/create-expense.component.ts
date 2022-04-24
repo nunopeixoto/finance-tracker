@@ -28,7 +28,8 @@ export class CreateExpenseComponent implements OnInit {
     expenseCategory: new FormControl('', [Validators.required]),
     expenseSubCategory: new FormControl(''),
     note: new FormControl(''),
-    amount: new FormControl('', [Validators.required])
+    amount: new FormControl('', [Validators.required]),
+    type: new FormControl('debit', [Validators.required])
   });
 
   constructor(
