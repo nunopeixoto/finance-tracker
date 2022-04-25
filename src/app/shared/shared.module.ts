@@ -6,26 +6,34 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { NgxDatePipe } from './pipes/ngx-date.pipe';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
+import { RoundNumberPipe } from './pipes/round-number.pipe';
 
 @NgModule({
   declarations: [
     PageNotFoundComponent,
     HeaderComponent,
-    NgxDatePipe
+    NgxDatePipe,
+    CurrencyFormatPipe,
+    RoundNumberPipe
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgApexchartsModule
   ],
   exports: [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     HeaderComponent,
-    NgxDatePipe
+    NgxDatePipe,
+    CurrencyFormatPipe,
+    RoundNumberPipe
   ]
 })
 export class SharedModule { }

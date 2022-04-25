@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('src/app/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('src/app/features/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '**',

@@ -8,8 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { HttpApiInterceptor } from './http-api.interceptor';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { RouterModule } from '@angular/router';
+import { DashboardModule } from './features/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
