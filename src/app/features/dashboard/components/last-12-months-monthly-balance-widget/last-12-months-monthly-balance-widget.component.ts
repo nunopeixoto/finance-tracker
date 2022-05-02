@@ -13,8 +13,8 @@ import {
   ApexTooltip
 } from "ng-apexcharts";
 import { WidgetService } from '../../services/widget.service';
-import {Last12MonthsMonthlyBalanceWidgetModel} from '../../models/last-12-months-monthly-balance-widget.model';
 import { RoundNumberPipe } from 'src/app/shared/pipes/round-number.pipe';
+import { Last12MonthsMonthlyBalanceWidget } from '../../models/last-12-months-monthly-balance-widget.model';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -32,7 +32,7 @@ export type ChartOptions = {
   templateUrl: './last-12-months-monthly-balance-widget.component.html',
   styleUrls: ['./last-12-months-monthly-balance-widget.component.scss']
 })
-export class Last12MonthsMonthlyBalanceWidget implements OnInit {
+export class Last12MonthsMonthlyBalanceWidgetComponent implements OnInit {
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions!: ChartOptions;
 
@@ -44,13 +44,13 @@ export class Last12MonthsMonthlyBalanceWidget implements OnInit {
   }
 
   ngOnInit(): void {
-    this.widgetService.getWidget('last-12-months-monthly-balance').subscribe((data) => {
+    this.widgetService.getWidgetLast12MonthsMonthlyBalance().subscribe((data) => {
       this.buildChart(data);
       this.loading = false;
     });
   }
 
-  private buildChart(data :Last12MonthsMonthlyBalanceWidgetModel) : void {
+  private buildChart(data: Last12MonthsMonthlyBalanceWidget) : void {
     const months = Object.keys(data);
 
     let expenses = [];
