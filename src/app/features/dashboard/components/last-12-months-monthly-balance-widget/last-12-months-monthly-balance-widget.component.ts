@@ -13,7 +13,7 @@ import {
   ApexTooltip
 } from "ng-apexcharts";
 import { WidgetService } from '../../services/widget.service';
-import { RoundNumberPipe } from 'src/app/shared/pipes/round-number.pipe';
+import { RoundNumberPipe } from 'app/shared/pipes/round-number.pipe';
 import { Last12MonthsMonthlyBalanceWidget } from '../../models/last-12-months-monthly-balance-widget.model';
 
 export type ChartOptions = {

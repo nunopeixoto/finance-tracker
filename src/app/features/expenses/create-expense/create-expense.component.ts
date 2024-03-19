@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormControl, Validators, UntypedFormBuilder, AbstractControl} from '@angular/forms';
 import {map, Observable, startWith} from 'rxjs';
-import { NgxDatePipe } from 'src/app/shared/pipes/ngx-date.pipe';
+import { NgxDatePipe } from 'app/shared/pipes/ngx-date.pipe';
 import {ExpenseCategory} from '../models/expense-category.model';
 import {ExpenseSubCategory} from '../models/expense-sub-category.model';
 import {Expense} from '../models/expense.model';

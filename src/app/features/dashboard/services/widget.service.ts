@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 import { Top5ExpenseCategoriesAllTimeWidget } from '../models/top5-expense-categories-all-time-widget.model';
 import { Last12MonthsMonthlyBalanceWidget } from '../models/last-12-months-monthly-balance-widget.model';
 

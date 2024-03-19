@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginResponseDto } from './dto/response/login-response.dto';
 import { RegisterRequestDto } from './dto/request/register-request.dto';
 import {Router} from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AuthService {

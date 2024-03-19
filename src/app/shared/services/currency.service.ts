@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CurrenciesConfig, CurrencyModel } from 'src/app/shared/configs/currencies.config';
+import { CurrenciesConfig, CurrencyModel } from 'app/shared/configs/currencies.config';
 
 @Injectable({ providedIn: 'root' })
 export class CurrencyService {

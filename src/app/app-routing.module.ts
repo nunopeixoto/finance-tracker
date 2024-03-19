@@ -5,18 +5,18 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('src/app/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('app/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '',   redirectTo: '/auth/login', pathMatch: 'full'
   },
   {
     path: 'expenses',
-    loadChildren: () => import('src/app/features/expenses/expenses.module').then(m => m.ExpensesModule)
+    loadChildren: () => import('app/features/expenses/expenses.module').then(m => m.ExpensesModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('src/app/features/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('app/features/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '**',

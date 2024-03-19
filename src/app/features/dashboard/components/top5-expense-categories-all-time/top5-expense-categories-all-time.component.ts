@@ -7,7 +7,7 @@ import {
   ApexChart
 } from "ng-apexcharts";
 import {WidgetService} from '../../services/widget.service';
-import {RoundNumberPipe} from 'src/app/shared/pipes/round-number.pipe';
+import {RoundNumberPipe} from 'app/shared/pipes/round-number.pipe';
 import {Top5ExpenseCategoriesAllTimeWidget} from '../../models/top5-expense-categories-all-time-widget.model';
 
 export type ChartOptions = {

@@ -1,4 +1,4 @@
-import { User } from "src/app/shared/models/user.model";
+import { User } from "app/shared/models/user.model";
 
 export interface LoginResponseDto {
   user: User;
