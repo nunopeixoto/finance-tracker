@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, ValidationErrors, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormControl, ValidationErrors, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../auth.service';
 import { LoginResponseDto } from '../../dto/response/login-response.dto';
@@ -14,16 +14,16 @@ export class SignUpComponent {
   hideConfirmation = true;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router
   ) {}
 
   signUpForm = this.formBuilder.group({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    name: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    password_confirmation: new FormControl('', [Validators.required, this.passwordMatch]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    name: new UntypedFormControl('', [Validators.required]),
+    password: new UntypedFormControl('', [Validators.required]),
+    password_confirmation: new UntypedFormControl('', [Validators.required, this.passwordMatch]),
   });
 
   onSubmit(): void {

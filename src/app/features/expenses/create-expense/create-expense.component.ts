@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormBuilder, AbstractControl} from '@angular/forms';
+import {UntypedFormControl, Validators, UntypedFormBuilder, AbstractControl} from '@angular/forms';
 import {map, Observable, startWith} from 'rxjs';
 import { NgxDatePipe } from 'src/app/shared/pipes/ngx-date.pipe';
 import {ExpenseCategory} from '../models/expense-category.model';
@@ -23,17 +23,17 @@ export class CreateExpenseComponent implements OnInit {
   public filteredSubCategories: Observable<ExpenseSubCategory[]>|undefined = undefined;
 
   public createExpenseForm = this.formBuilder.group({
-    description: new FormControl('', [Validators.required]),
-    date: new FormControl(new Date(), [Validators.required]),
-    expenseCategory: new FormControl('', [Validators.required]),
-    expenseSubCategory: new FormControl(''),
-    note: new FormControl(''),
-    amount: new FormControl('', [Validators.required]),
-    type: new FormControl('debit', [Validators.required])
+    description: new UntypedFormControl('', [Validators.required]),
+    date: new UntypedFormControl(new Date(), [Validators.required]),
+    expenseCategory: new UntypedFormControl('', [Validators.required]),
+    expenseSubCategory: new UntypedFormControl(''),
+    note: new UntypedFormControl(''),
+    amount: new UntypedFormControl('', [Validators.required]),
+    type: new UntypedFormControl('debit', [Validators.required])
   });
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private expenseCategoryService: ExpenseCategoryService,
     private expenseSubCategoryService: ExpenseSubCategoryService,
     private expenseService: ExpenseService,
