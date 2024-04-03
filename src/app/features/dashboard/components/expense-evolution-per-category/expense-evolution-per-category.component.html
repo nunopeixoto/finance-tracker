@@ -1,0 +1,14 @@
+<div class="flex justify-center items-center">
+  <mat-spinner *ngIf="loading "></mat-spinner>
+</div>
+<div id="chart" *ngIf="!loading">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [dataLabels]="chartOptions.dataLabels"
+      [grid]="chartOptions.grid"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title"
+    ></apx-chart>
+</div>
